@@ -33,6 +33,7 @@ public class HaGatewayConfiguration
     private Map<String, UserConfiguration> presetUsers = new HashMap();
     private BackendStateConfiguration backendState;
     private ClusterStatsConfiguration clusterStatsConfiguration;
+    private OtelConfiguration otelConfiguration;
     private List<String> extraWhitelistPaths = new ArrayList<>();
 
     public HaGatewayConfiguration() {}
@@ -135,6 +136,16 @@ public class HaGatewayConfiguration
     public void setClusterStatsConfiguration(ClusterStatsConfiguration clusterStatsConfiguration)
     {
         this.clusterStatsConfiguration = clusterStatsConfiguration;
+    }
+
+    public OtelConfiguration getOtelConfiguration()
+    {
+        return this.otelConfiguration;
+    }
+
+    public void setOtelConfiguration(OtelConfiguration otelConfiguration)
+    {
+        this.otelConfiguration = otelConfiguration;
     }
 
     public List<String> getExtraWhitelistPaths()

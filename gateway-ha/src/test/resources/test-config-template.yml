@@ -17,8 +17,13 @@ dataStore:
   password: sa
   driver: org.h2.Driver
 
+otelConfiguration:
+  otelCollectorOtlpProtocol: grpc
+  otelExporterOtlpEndpoint: http://localhost:4317
+
 modules:
   - io.trino.gateway.ha.module.HaGatewayProviderModule
+  - io.trino.gateway.ha.module.OpenTelemetryModule
 
 managedApps:
   - io.trino.gateway.ha.GatewayManagedApp

@@ -13,6 +13,7 @@
  */
 package io.trino.gateway;
 
+//import io.trino.gateway.containers.OpenTracingCollector;
 import io.trino.gateway.ha.HaGatewayLauncher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,6 +56,9 @@ public final class TrinoGatewayRunner
         mysql.withCopyFileToContainer(forClasspathResource("add_backends.sql"), "/docker-entrypoint-initdb.d/2-add_backends.sql");
         mysql.setPortBindings(List.of("3306:3306"));
         mysql.start();
+
+//        io.trino.gateway.containers.OpenTracingCollector openTracingCollector = new io.trino.gateway.containers.OpenTracingCollector();
+//        openTracingCollector.start();
 
         HaGatewayLauncher.main(new String[]{"server", "gateway-ha/gateway-ha-config.yml"});
 

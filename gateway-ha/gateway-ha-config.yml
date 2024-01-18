@@ -30,6 +30,10 @@ server:
     - type: http
       port: 8091
 
+otelConfiguration:
+  otelCollectorOtlpProtocol: grpc
+  otelExporterOtlpEndpoint: http://localhost:4317
+
 # This can be adjusted based on the coordinator state
 monitor:
   connectionTimeout: 15
@@ -38,6 +42,7 @@ modules:
   - io.trino.gateway.ha.module.HaGatewayProviderModule
   - io.trino.gateway.ha.module.ClusterStateListenerModule
   - io.trino.gateway.ha.module.ClusterStatsMonitorModule
+#  - io.trino.gateway.ha.module.OpenTelemetryModule
 
 managedApps:
   - io.trino.gateway.ha.GatewayManagedApp
