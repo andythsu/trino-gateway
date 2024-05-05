@@ -129,6 +129,7 @@ public abstract class BaseApp
     {
         appModules.add(new MetricRegistryModule(environment.metrics()));
         appModules.addAll(addModules(configuration, environment));
+        appModules.add(new io.airlift.tracing.TracingModule("trino", "dev"));
         Injector injector = Guice.createInjector(appModules.build());
         injector.injectMembers(this);
         registerWithInjector(configuration, environment, injector);
